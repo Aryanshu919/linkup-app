@@ -218,7 +218,7 @@ export default function Dashboard({ userId }: { userId: string }) {
     setQrError("");
     setQrImage(null);
     try {
-      const res = await fetch("/api/qr/generate", {
+      const res = await fetch("/api/auth/qr", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ slug: userId }), // slug = userId (the user's unique handle)

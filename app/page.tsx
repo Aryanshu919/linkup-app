@@ -246,11 +246,7 @@ export default function HomePage() {
           }}>LinkUp</span>
         </div>
 
-        <ul className="nav-desktop-links" style={{ display: "flex", gap: 32, listStyle: "none" }}>
-          {["How it works", "Features", "Pricing"].map((l) => (
-            <li key={l}><a href="#" className="nav-link">{l}</a></li>
-          ))}
-        </ul>
+
 
         <div className="nav-desktop-btns" style={{ display: "flex", gap: 12 }}>
           <Link href="/login"><button className="outline-btn">Log in</button></Link>
