@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { UserIcon } from "lucide-react";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 type Link = {
@@ -210,6 +211,11 @@ export default function Dashboard({ userId }: { userId: string }) {
     }
   };
 
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/");
+  };
+
   // ── Generate QR ───────────────────────────────────────────────────────────
   // Your API: POST /api/qr/generate expects { slug }
   // It builds the URL as: ${NEXT_PUBLIC_URL}/profile/${slug}
@@ -372,20 +378,7 @@ export default function Dashboard({ userId }: { userId: string }) {
           </div>
 
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-            <div className="user-pill" style={{
-              display:"flex", alignItems:"center", gap:8,
-              padding:"5px 12px 5px 5px",
-              background:"rgba(255,255,255,0.04)",
-              border:"1px solid rgba(255,255,255,0.07)",
-              borderRadius:100,
-            }}>
-              <div style={{
-                width:24, height:24, borderRadius:"50%",
-                background:"linear-gradient(135deg,#5b4fff,#e8f94a)", flexShrink:0,
-              }} />
-              <span style={{ fontSize:13, color:"#5a5a78" }}>{userId}</span>
-            </div>
-            <button className="logout-btn" onClick={() => router.push("/login")}>
+            <button className="logout-btn" onClick={handleLogout}>
               <span style={{ fontSize:14 }}>→</span> Log out
             </button>
           </div>
