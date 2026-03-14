@@ -328,7 +328,7 @@ export default async function Profile({
                 <p>No links added yet.</p>
               </div>
             ) : (
-              links.map((link, i) => {
+              links.map((link: { id: string; url: string; platform: string }  , i: number ) => {
                 const meta = getMeta(link.platform);
                 return (
                   <a
